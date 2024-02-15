@@ -1,4 +1,27 @@
-$scope.num2
+<!DOCTYPE html>
+<html>
+<title>
+AJS Simple Calculator
+</title>
+<head>
+<script type="text/javascript"
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+</script>
+<script>
+var app=angular.module("calcApp",[]);
+app.controller("calcCntrl",function($scope)
+{
+$scope.num1=0
+$scope.num2=0
+$scope.result=0
+$scope.operator="add"
+$scope.compute=function(){
+switch($scope.operator){
+case 'add': $scope.result=$scope.num1 + $scope.num2
+break
+case 'sub': $scope.result=$scope.num1 - $scope.num2
+break
+case 'mul': $scope.result=$scope.num1 * $scope.num2
 break
 case 'div': if($scope.num2==0){
 alert("Divide by zero error")
