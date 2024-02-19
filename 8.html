@@ -1,0 +1,59 @@
+<html>
+    <title> Angular JS Login</title>
+    <head>
+        <script type="text/javascript" src="angular.min.js"></script>
+        <script>
+            var app=angular.module("loginApp",[]);
+            app.controller('loginAppCntrl',function($scope){
+                $scope.userName=''
+                $scope.password=''
+                $scope.noAttempts=0
+                $scope.login=function(){
+                    if($scope.userName=="Harish" && $scope.password=="12345678")
+                    {
+                        alert("Login Succesfull")
+                    }
+                    else
+                    {
+                        $scope.noAttempts++
+                        if($scope.noAttempts<=3)
+                        {
+                            alert("Incorrect user name/password! Attempt No."+$scope.noAttempts)
+                        }
+                        else
+                        {
+                            document.getElementById("loginButton").disabled=true
+                        }
+                    }
+                }
+            });
+        </script>
+        <style>
+            .error.message{
+                color:red;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body ng-app="loginApp" ng-controller="loginAppCntrl">
+        <h1>Angular JS Login Form</h1>
+        <form name="loginForm" ng-submit="submitForm()">
+            Enter the User Name:<input type="text" name="userName" ng-model="userName" ng-minlength="5" ng-maxlength="8" required placeholder="Enter the User Name">
+            <span class="error.message"
+            ng-show="loginForm.userName.$error.minlength">Minimum Length must be 5</span>
+            <span class="error.message"
+            ng-show="loginForm.userName.$error.maxlength">Maximum Length must be 8</span>
+            <br/>
+            <br/>
+            Enter the Password:<input type="password" name="password"
+            ng-model="password" ng-minlength="5" ng-maxlength="8" required placeholder="Enter the Password">
+            <span class="error.message"
+            ng-show="loginForm.password.$error.minlength">Minimum Length must be 5</span>
+            <span class="error.message"
+            ng-show="loginForm.password.$error.maxlength">Maximum Length must be 8</span>
+            <br/>
+            <br/>
+            <button type="submit" ng-disabled="loginForm.$invalid" ng-click="login()" id="loginButton">Login</button>
+        </form>
+    </body>
+</html>
