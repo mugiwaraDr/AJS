@@ -66,7 +66,7 @@ Enter the name of the Task:
 <td>
 <span ng-show="!task.EDITING">{{task.TITLE}}</span>
 <input type="text" ng-show="task.EDITING"
-ng-model="task.TITLE" ng- blur="turnOffEditing(task)">
+ng-model="task.TITLE" ng-blur="turnOffEditing(task)">
 </td>
 <td>
 <button ng-click="editTask(task)">Edit</button>
